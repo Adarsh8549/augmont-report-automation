@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Augmont Daily Report</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">AUGMONT <span>Daily Report</span></div>
+    <div id="status" class="status-chips"></div>
+  </header>
+
+  <main>
+    <!-- Report type switcher -->
+    <div class="mode-switch">
+      <div class="mode-row">
+        <button class="mode-btn active" data-type="daily">Daily Report</button>
+        <button class="mode-btn" data-type="weekly">Weekly Report</button>
+      </div>
+      <div class="audience-switch hidden" id="audience-switch">
+        <span class="aud-label">Audience:</span>
+        <button class="aud-btn active" data-aud="b2b">B2B</button>
+        <button class="aud-btn" data-aud="b2c">B2C</button>
+      </div>
+    </div>
+
+    <!-- Step 1: upload -->
+    <section class="card" id="step-upload">
+      <h2><span class="step-num">1</span> Upload report files</h2>
+      <div class="grid">
+        <label class="filebox">
+          <span class="filebox-label">Report (.docx)</span>
+          <input type="file" id="docx" accept=".docx" />
+          <span class="filebox-name" id="docx-name">No file selected</span>
+        </label>
+        <label class="filebox">
+          <span class="filebox-label">Thumbnail (.jpg / .png) — optional</span>
+          <input type="file" id="thumb" accept=".jpg,.jpeg,.png" />
+          <span class="filebox-name" id="thumb-name">No file selected</span>
+        </label>
+      </div>
+      <button id="parse-btn" class="primary" disabled>Parse report</button>
+      <p class="hint" id="parse-hint"></p>
+    </section>
+
+    <!-- Step 2: review/edit -->
+    <section class="card hidden" id="step-review">
+      <h2><span class="step-num">2</span> Review &amp; edit content</h2>
+      <p class="hint">Parsed from the .docx — correct anything before publishing.</p>
+      <div id="fields"></div>
+    </section>
+
+    <!-- Step 3: image source -->
+    <section class="card hidden" id="step-canva">
+      <h2><span class="step-num">3</span> Report image</h2>
+      <div class="radio-row">
+        <label><input type="radio" name="mode" value="render" checked /> Generate from template <span class="tag">automated · no Canva</span></label>
+        <label><input type="radio" name="mode" value="designExport" /> Export an existing Canva design</label>
+        <label><input type="radio" name="mode" value="pngUrl" /> Paste a Canva PNG export URL</label>
+        <label><input type="radio" name="mode" value="autofill" /> Generate via Canva autofill <span class="tag tag-live">needs Canva Enterprise</span></label>
+      </div>
+      <div id="mode-render" class="mode-panel">
+        <p class="hint">Builds the report image automatically from the fields above — no Canva, no manual editing. Hit <b>Preview</b> to see it before publishing.</p>
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+          <button id="preview-btn" class="secondary">🔍 Preview image</button>
+          <button id="download-btn" class="secondary">⬇ Download image</button>
+        </div>
+        <div id="preview-wrap" style="margin-top:14px"></div>
+      </div>
+      <div id="mode-autofill" class="mode-panel hidden">
+        <label class="field">Brand Template ID
+          <input type="text" id="brandTemplateId" placeholder="from .env if blank" />
+        </label>
+        <p class="hint">⚠️ Autofill requires a Canva <b>Enterprise</b> plan + a Brand Template with data fields matching <code>canva-fields.json</code>. Without Enterprise, Canva returns 403 — use another mode.</p>
+      </div>
+      <div id="mode-designExport" class="mode-panel hidden">
+        <label class="field">Design ID
+          <input type="text" id="designId" placeholder="e.g. DAHBvlbvmHs" value="DAHBvlbvmHs" />
+        </label>
+        <p class="hint">Exports the existing Canva design as-is. Edit the design in Canva first, then export here.</p>
+      </div>
+      <div id="mode-pngUrl" class="mode-panel hidden">
+        <label class="field">Canva PNG export URL
+          <input type="text" id="pngUrl" placeholder="https://export-download.canva.com/..." />
+        </label>
+      </div>
+    </section>
+
+    <!-- Step 4: publish -->
+    <section class="card hidden" id="step-publish">
+      <h2><span class="step-num">4</span> Publish</h2>
+      <div class="radio-row" id="status-row">
+        <label><input type="radio" name="status" value="draft" checked /> Save as draft <span class="tag">safe — not live</span></label>
+        <label><input type="radio" name="status" value="pending" /> Submit for approval <span class="tag">pending review</span></label>
+        <label><input type="radio" name="status" value="publish" /> Publish now <span class="tag tag-live">goes live</span></label>
+      </div>
+      <button id="publish-btn" class="primary">Save as draft</button>
+      <div id="result" class="result"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

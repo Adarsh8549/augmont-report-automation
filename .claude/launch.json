@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "augmont-report-webapp",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["webapp/server.js"],
+      "port": 3000
+    }
+  ]
+}

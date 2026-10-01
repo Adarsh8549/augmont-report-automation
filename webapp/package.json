@@ -1,0 +1,21 @@
+{
+  "name": "augmont-daily-report-webapp",
+  "version": "0.1.0",
+  "description": "Internal webapp to automate the Augmont daily report workflow: parse .docx, autofill Canva, export PNG, publish to WordPress.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.104.1",
+    "adm-zip": "^0.5.16",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "fast-xml-parser": "^5.8.0",
+    "multer": "^2.1.1",
+    "nodemailer": "^8.0.10",
+    "puppeteer-core": "^24.43.1"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_comment": "Maps logical report fields (left) to the data-field names defined in your Canva Brand Template (right). After you save the design as a Brand Template with named data fields, rename the values on the right to match exactly. Only the 'text' fields listed here are sent to autofill.",
+  "text": {
+    "headline": "headline",
+    "date": "date",
+    "price_movement": "price_movement",
+    "geopolitical": "geopolitical",
+    "macro": "macro",
+    "gold_technicals": "gold_technicals",
+    "silver_technicals": "silver_technicals",
+    "canva_gold_intl_support": "gold_intl_support",
+    "canva_gold_intl_resistance": "gold_intl_resistance",
+    "canva_gold_dom_support": "gold_dom_support",
+    "canva_gold_dom_resistance": "gold_dom_resistance",
+    "canva_silver_intl_support": "silver_intl_support",
+    "canva_silver_intl_resistance": "silver_intl_resistance",
+    "canva_silver_dom_support": "silver_dom_support",
+    "canva_silver_dom_resistance": "silver_dom_resistance"
+  }
+}

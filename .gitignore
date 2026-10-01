@@ -1,0 +1,37 @@
+# --- Secrets: never commit ---
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+.canva-tokens.json
+**/.canva-tokens.json
+.approvals.json
+**/.approvals.json
+ca-bundle.pem
+**/ca-bundle.pem
+
+# Claude local settings (contains saved permission strings w/ credentials)
+**/settings.local.json
+
+# --- Dependencies ---
+node_modules/
+**/node_modules/
+
+# --- Client report source files (business content) ---
+reports/
+
+# --- Logs & runtime ---
+*.log
+server-out.log
+server-err.log
+
+# --- Scratch / generated artifacts ---
+_wk_baseline.png
+_*.png
+sessions/
+
+# --- Python leftovers ---
+__pycache__/
+*.pyc

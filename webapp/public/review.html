@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Approve — Augmont Daily Report</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">AUGMONT <span>Report Approval</span></div>
+  </header>
+  <main>
+    <section class="card" id="review-card">
+      <h2 id="r-title">Loading…</h2>
+      <p class="hint" id="r-excerpt"></p>
+      <div id="r-image"></div>
+      <div id="r-actions" class="hidden" style="margin-top:18px;display:flex;gap:12px">
+        <button id="approve-btn" class="primary">✅ Approve &amp; publish</button>
+        <button id="reject-btn" class="secondary">Reject (back to draft)</button>
+      </div>
+      <div id="r-result" class="result"></div>
+    </section>
+  </main>
+  <script src="review.js"></script>
+</body>
+</html>
