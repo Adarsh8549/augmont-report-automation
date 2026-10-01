@@ -35,3 +35,12 @@ sessions/
 # --- Python leftovers ---
 __pycache__/
 *.pyc
+
+# Cloudflare tunnel binary + logs (local only)
+cloudflared.exe
+**/cloudflared.exe
+tunnel.log
+tunnel.out
+rw_test.png
+rd_test.png
+show-env-for-render.ps1
