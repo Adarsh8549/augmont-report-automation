@@ -1,0 +1,38 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Deploy: Render Dashboard -> New -> Blueprint -> pick this repo.
+services:
+  - type: web
+    name: augmont-report-webapp
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter        # 512MB free tier struggles to render the 1920x4300 daily image
+    region: singapore
+    branch: main
+    autoDeploy: true
+    envVars:
+      # Set in the Render dashboard (never commit these).
+      - key: APP_PASSWORD
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: WP_SITE
+        sync: false
+      - key: WP_USERNAME
+        sync: false
+      - key: WP_APP_PASSWORD
+        sync: false
+      - key: WP_CATEGORY_ID
+        sync: false
+      # Optional — only needed to re-export Canva backgrounds.
+      - key: CANVA_CLIENT_ID
+        sync: false
+      - key: CANVA_CLIENT_SECRET
+        sync: false
+      # Fixed values.
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: BROWSER_PATH
+        value: /usr/bin/chromium
+      - key: NODE_ENV
+        value: production

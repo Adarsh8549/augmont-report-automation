@@ -1,0 +1,14 @@
+**/node_modules
+**/.env
+**/.env.*
+!**/.env.example
+**/.canva-tokens.json
+**/.approvals.json
+**/ca-bundle.pem
+**/*.log
+.git
+.claude
+reports
+scripts
+sessions
+_*.png
